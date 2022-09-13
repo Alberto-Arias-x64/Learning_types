@@ -13,7 +13,7 @@ enum Family { //code legible
     Tree,
 }
 
-const Animal = (Type, Name, Years): Animal_Extended => {
+const Animal = (Type, Name:string, Years:number): Animal_Extended => {
     const Promise_1 = Promise.resolve<boolean>(true)
     const Promise_2 = Promise.resolve<boolean>(true)
 
