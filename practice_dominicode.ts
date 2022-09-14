@@ -87,7 +87,7 @@ const book: Book = {
 function createBook(book: Book): Book { return book }
 createBook(book)
 
-enum Language {
+const enum Language {
     Javascript,
     Typescript
 }
@@ -121,7 +121,7 @@ cat.showInfo()
 class Dick {
     size: number | undefined
     color: string | undefined
-    constructor(private Virgin: boolean) { } // auto asignacion
+    constructor(private readonly Virgin: boolean) { } // auto asignacion + solo lectura
     showInfo(): boolean { return this.Virgin }
 }
 
@@ -140,9 +140,57 @@ class rareWare extends Sex {
     constructor() {
         super(false)
     }
-    work(){
+    work() {
         this.zone
         // this.city NO WORKS
         this.country // only asses when extend whit other class
     }
 }
+
+/*////////// Session 7 //////////*/
+
+//Name spaces
+
+namespace Util {
+    export namespace Taxes {
+        export function calculateIVA(price: number): number {
+            return price * 1.21
+        }
+        export function calculateLateIVA(price: number): number {
+            return price * 1.3
+        }
+    }
+}
+
+/// <reference path="practice.ts">
+let utils = Util.Taxes
+console.log(utils.calculateIVA(150))
+console.log(utils.calculateLateIVA(200))
+
+/*////////// Session 8 //////////*/
+
+//import{PI as pi} from "./module"
+//import * as SIU from "./module"
+// SIU.PI
+//export{}
+
+//tsconfig.json 
+/* 
+    target: es2016
+    moduleResolution: "node"
+    outDir: "./dist"
+ */
+
+/*////////// Session 9 //////////*/
+
+type dataType = Dick | Pussy
+
+/* generic */
+class Alfred<T> {           //extend (Dick | Pussy)
+    Heavy:T | undefined
+    constructor() {}
+}
+
+const major = new Alfred<string>
+major.Heavy = 'road'
+console.log(major.Heavy)
